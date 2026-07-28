@@ -13,8 +13,11 @@ class PostDashboardController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->where('author_id', Auth::user()->id)->paginate(10)->withQueryString();
-        return view('dashboard', ['posts' => $posts]);
+        $posts = Post::latest()->where('author_id', Auth::user()->id);
+        if (request('keyword')) {
+            $posts->where('title', 'like', '%' . request('keyword') . '%');
+        }
+        return view('dashboard', ['posts' => $posts->paginate(10)->withQueryString()]);
     }
 
     /**
