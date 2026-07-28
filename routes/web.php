@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,11 @@ Route::get('/post/{post:slug}', function(Post $post){
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
