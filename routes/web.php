@@ -32,6 +32,9 @@ Route::get('/post/{post:slug}', function(Post $post){
 
 Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard/create', [PostDashboardController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard', [PostDashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard.show');
 
 Route::middleware('auth')->group(function () {
