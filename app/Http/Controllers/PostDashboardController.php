@@ -35,12 +35,23 @@ class PostDashboardController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => ['required', 'unique:posts', 'max:255'],
+            'category_id' => ['required'],
+            'body' => ['required'],
+        ],[
+            'title.required' => 'Field :attribute harus di isi!',
+            'category_id.required' => 'Anda Wajib memilih satu!',
+            'body.required' => 'Body tidak boleh kosong!'
+        ]);
+
+
         Post::create([
             'title' => $request->title,
             'author_id' => Auth::user()->id,
             'category_id' => $request->category_id,
-            'slug'=> Str::slug($request->title),
-            'body'=> $request->body,
+            'slug' => Str::slug($request->title),
+            'body' => $request->body,
         ]);
 
         return redirect('/dashboard');
