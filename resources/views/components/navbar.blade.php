@@ -37,8 +37,8 @@
                                     class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">
                                     <span class="absolute -inset-1.5"></span>
                                     <span class="sr-only">Open user menu</span>
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
+                                    <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                        alt="{{ Auth::user()->name }}" id="avatar-preview"
                                         class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
                                     <div class="text-gray-300 ml-3 font-medium">{{ Auth::user()->name }}</div>
                                     <svg class="fill-current h-4 w-4 text-gray-300" xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
                     {{-- pembungkus1 --}}
                     <div class="flex items-center px-5">
                         <div class="shrink-0">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
                                 alt="{{ Auth::user()->name }}"
                                 class="size-10 rounded-full outline -outline-offset-1 outline-white/10" />
                         </div>
@@ -133,10 +133,10 @@
                         <a href="/dashboard"
                             class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-white/5 hover:text-white">Settings</a>
                         <form action="/logout" method="POST">
-                        @csrf
-                        <button
-                            class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-white/5 hover:text-white">Log
-                            out</button>
+                            @csrf
+                            <button
+                                class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-white/5 hover:text-white">Log
+                                out</button>
                         </form>
                     </div>
                 @else

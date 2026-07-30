@@ -5,10 +5,10 @@
 
         <form class="max-w-md mx-auto mb-8" action="">
             @if (request('category'))
-                <input type='hidden' name='category' value='{{ request('category') }}'/>
+                <input type='hidden' name='category' value='{{ request('category') }}' />
             @endif
             @if (request('author'))
-                <input type='hidden' name='author' value='{{ request('author') }}'/>
+                <input type='hidden' name='author' value='{{ request('author') }}' />
             @endif
             <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
             <div class="relative">
@@ -21,7 +21,7 @@
                 </div>
                 <input type="search" id="search"
                     class="block w-full p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
-                    placeholder="Search post title..." autofocus autocomplete="off" name="keyword"/>
+                    placeholder="Search post title..." autofocus autocomplete="off" name="keyword" />
                 <button type="submit"
                     class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
             </div>
@@ -49,9 +49,9 @@
                     <div class="flex justify-between items-center">
                         <div class="flex items-center space-x-4">
                             <img class="w-7 h-7 rounded-full"
-                                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                                alt="{{ $post->author->name }}" />
-                            <span class="font-medium text-sm dark:text-white">
+                                src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                alt="{{ $post->author->name }}" /><span class="font-medium text-sm dark:text-white">
+
                                 <a href="/posts?author={{ $post->author->username }}"
                                     class="hover:underline">{{ $post->author->name }}</a>
                             </span>
@@ -69,10 +69,11 @@
                     </div>
                 </article>
             @empty
-            <div>
-                <p class="font-bold text-2xl my-10">Article not Found!</p>
-                <a href="/posts" class="text-blue-600 hover:underline hover:text-blue-900">&laquo; Back to all posts.</a>
-            </div>
+                <div>
+                    <p class="font-bold text-2xl my-10">Article not Found!</p>
+                    <a href="/posts" class="text-blue-600 hover:underline hover:text-blue-900">&laquo; Back to all
+                        posts.</a>
+                </div>
             @endforelse
         </div>
     </div>

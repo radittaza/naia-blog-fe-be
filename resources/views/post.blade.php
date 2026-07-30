@@ -1,16 +1,4 @@
 <x-layout :title="$title">
-    {{-- <article class="py-8 border-gray-300 max-w-screen-md">
-        <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}  <span class="text-sm font-medium text-gray-500">{{ fake()->dateTime()->format('d M Y') }}</span></h2>
-        <div class="text-base text-green-500">
-            <a href="/author/{{ $post->author->username }}" class="hover:underline"> {{ $post->author->name }} </a> | 
-            <a href="/category/{{ $post->category->slug }}" class="hover:underline"> {{ $post->category->name }}</a>
-        </div>
-        <p class="my-4 font-light">{{ $post['body'] }}</p>
-        <a href="/posts/" class="font-semibold text-violet-500 hover:underline">&laquo; Back to menu</a>
-    </article> --}}
-
-
-
     <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
@@ -21,10 +9,10 @@
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                             <a href="/posts?author={{ $post->author->username }}">
-    <img class="mr-4 w-16 h-16 rounded-full"
-        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-        alt="{{ $post->author->name }}">
-</a>
+                                <img class="mr-4 w-16 h-16 rounded-full"
+                                    src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                alt="{{ $post->author->name }}" />
+                            </a>
                             <div>
                                 <a href="/posts?author={{ $post->author->username }}" rel="author"
                                     class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
@@ -34,7 +22,8 @@
                                         {{ $post->category->name }}
                                     </span>
                                 </a>
-                                <p class="text-base text-gray-500 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
+                                <p class="text-base text-gray-500 dark:text-gray-400">
+                                    {{ $post->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
                     </address>

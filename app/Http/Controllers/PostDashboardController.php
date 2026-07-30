@@ -106,6 +106,6 @@ class PostDashboardController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('/dashboard')->with(['delete' => 'Your post has been saved!']);
+        return redirect('/dashboard')->with(['delete' => 'Your post has been deleted!']);
     }
 }
