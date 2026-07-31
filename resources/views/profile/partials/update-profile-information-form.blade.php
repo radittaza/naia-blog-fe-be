@@ -69,7 +69,7 @@
             </div>
         @enderror
         <img class="w-16 h-16 rounded-base"
-            src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'https://picsum.photos/200?random=1' }}"
+            src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('img/avatar_default.jpg') }}"
             alt="{{ $user->name }}" id="avatar-preview">
 
         <div class="flex items-center gap-4">

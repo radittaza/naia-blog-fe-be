@@ -24,7 +24,7 @@
                     <x-slot name="trigger">
                         <div class="flex items-center px-5">
                             <div class="shrink-0">
-                                <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('img/avatar_default.jpg') }}"
                                     alt="{{ Auth::user()->name }}"
                                     class="size-10 rounded-full outline -outline-offset-1 outline-white/10" />
                             </div>
@@ -91,7 +91,7 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-5">
                 <div class="shrink-0">
-                    <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
+                    <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('img/avatar_default.jpg') }}"
                         alt="{{ Auth::user()->name }}"
                         class="size-10 rounded-full outline -outline-offset-1 outline-white/10" />
                 </div>
@@ -100,7 +100,7 @@
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
-            
+
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}

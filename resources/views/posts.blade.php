@@ -49,7 +49,7 @@
                     <div class="flex justify-between items-center">
                         <div class="flex items-center space-x-4">
                             <img class="w-7 h-7 rounded-full"
-                                src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : asset('img/avatar_default.jpg') }}"
                                 alt="{{ $post->author->name }}" /><span class="font-medium text-sm dark:text-white">
 
                                 <a href="/posts?author={{ $post->author->username }}"

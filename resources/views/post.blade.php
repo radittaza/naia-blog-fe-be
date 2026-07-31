@@ -10,8 +10,8 @@
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                             <a href="/posts?author={{ $post->author->username }}">
                                 <img class="mr-4 w-16 h-16 rounded-full"
-                                    src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : 'https://picsum.photos/200?random=1' }}"
-                                alt="{{ $post->author->name }}" />
+                                    src="{{ $post->author->avatar ? asset('storage/' . $post->author->avatar) : asset('img/avatar_default.jpg') }}"
+                                    alt="{{ $post->author->name }}" />
                             </a>
                             <div>
                                 <a href="/posts?author={{ $post->author->username }}" rel="author"

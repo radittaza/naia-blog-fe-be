@@ -37,7 +37,7 @@
                                     class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">
                                     <span class="absolute -inset-1.5"></span>
                                     <span class="sr-only">Open user menu</span>
-                                    <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
+                                    <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('img/avatar_default.jpg') }}"
                                         alt="{{ Auth::user()->name }}" id="avatar-preview"
                                         class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
                                     <div class="text-gray-300 ml-3 font-medium">{{ Auth::user()->name }}</div>
@@ -105,7 +105,7 @@
                     {{-- pembungkus1 --}}
                     <div class="flex items-center px-5">
                         <div class="shrink-0">
-                            <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://picsum.photos/200?random=1' }}"
+                            <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('img/avatar_default.jpg') }}"
                                 alt="{{ Auth::user()->name }}"
                                 class="size-10 rounded-full outline -outline-offset-1 outline-white/10" />
                         </div>
