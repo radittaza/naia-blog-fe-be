@@ -39,7 +39,7 @@ class PostDashboardController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:255'],
             'category_id' => ['required'],
-            'body' => ['required'],
+            'body' => 'required|min:200',
         ], [
             'title.required' => 'Field :attribute harus di isi!',
             'category_id.required' => 'Anda Wajib memilih satu!',

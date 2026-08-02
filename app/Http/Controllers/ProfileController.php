@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -26,25 +27,44 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-    {   
-        $validatedData = $request->validated();
+    {
+        $validated = $request->validated();
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        if( $request->hasFile('avatar')) {
+        // if ($request->hasFile('avatar')) {
+        //     if ($request->user()->avatar) {
+        //         Storage::disk('public')->delete($request->user()->avatar);
+        //     }
+        //     $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        //     $validated['avatar'] = $avatarPath;
+        // }
+
+        if($request->avatar){
             if ($request->user()->avatar) {
                 Storage::disk('public')->delete($request->user()->avatar);
             }
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $validatedData['avatar'] = $avatarPath;
+            $newFileName = Str::after($request->avatar, 'tmp/');
+            Storage::disk('public')->move($request->avatar, "avatars/$newFileName");
+            $validated['avatar'] = "avatars/$newFileName";
         }
-        $request->user()->update($validatedData);
+
+        $request->user()->update($validated);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $tmpPath = $request->file('avatar')->store('tmp', 'public');
+        };
+
+        return $tmpPath;
+    }
     /**
      * Delete the user's account.
      */
