@@ -1,6 +1,8 @@
-<x-layout :title="$title">
-
-    <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
+<x-app-layout :title="$title">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xs sm:rounded-lg">
+                    <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
 
 
         <form class="max-w-md mx-auto mb-8" action="">
@@ -78,4 +80,7 @@
             @endforelse
         </div>
     </div>
-</x-layout>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

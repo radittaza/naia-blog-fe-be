@@ -43,7 +43,7 @@
                 <textarea id="body" rows="4" name="body"
                     class=" hidden block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Write body here" value="{{ old('body') }}"></textarea>
-                <div id="editor"></div>
+                <div id="editor">{!! old('body') !!}</div>
                 @error('body')
                     <div class="mt-2 text-sm text-red-600 dark:text-red-500">
                         {{ $message }}
@@ -75,13 +75,13 @@
     <script>
         const quill = new Quill('#editor', {
             theme: 'snow',
-            placeholder:"Write body here",
+            placeholder: "Write body here",
         });
 
         const postForm = document.querySelector('#post-form');
         const postBody = document.querySelector('#body');
         const quillEditor = document.querySelector('#editor');
-        
+
         postForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const content = quillEditor.children[0].innerHTML;

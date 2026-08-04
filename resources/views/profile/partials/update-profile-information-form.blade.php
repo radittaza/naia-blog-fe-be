@@ -64,7 +64,7 @@
         <label class="block mb-2.5 text-sm font-medium text-heading" for="avatar">Upload file</label>
         <input
             class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body"
-            name="avatar" id="avatar" type="file" accept="image/png, image/jpeg, image/jpg, image/gif">
+            name="avatar" id="avatar" type="file" accept="image/png, image/jpeg, image/jpg, image/gif" />
 
         <p class="text-sm text-fg-danger-strong">.jpg, .png, .gif</p>
         @error('avatar')
@@ -89,22 +89,7 @@
 
 
 @push('script')
-    <script>
-        const input = document.getElementById('avatar');
-        const previewPhoto = () => {
-            const file = input.files;
-            if (file) {
-                const fileReader = new FileReader();
-                const preview = document.getElementById('avatar-preview');
-                fileReader.onload = function(event) {
-                    preview.setAttribute('src', event.target.result);
-                }
-                fileReader.readAsDataURL(file[0]);
-            }
-        }
-        input.addEventListener("change", previewPhoto);
-    </script>
-
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
@@ -118,14 +103,19 @@
         FilePond.registerPlugin(FilePondPluginFileValidateSize);
         FilePond.registerPlugin(FilePondPluginFileValidateType);
         FilePond.registerPlugin(FilePondPluginImagePreview);
-        const inputElement = document.querySelector('#avatar');
 
+        const inputElement = document.querySelector('#avatar');
         const pond = FilePond.create(inputElement, {
-            imageResizeMode: 'contain' 
+            imageResizeMode: 'contain',
             maxFileSize: '1MB',
             acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'],
             server: {
                 url: '/upload',
+                process: {
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                }
             }
         });
     </script>
