@@ -5,7 +5,8 @@
                 <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
 
                     <div class="mb-10 text-center">
-                        <span class="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase rounded-full bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-300">
+                        <span
+                            class="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase rounded-full bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-300">
                             Hubungi Kami
                         </span>
                         <h1 class="mb-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -21,28 +22,42 @@
 
                         {{-- Form Contact --}}
                         <div class="p-6 border border-gray-200 rounded-lg dark:border-gray-700">
-                            <form action="" method="POST" class="space-y-5">
+                            @if (session('success'))
+                                <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            @error('email')
+                                <p class="text-red-600 text-sm">{{ $message }}</p>
+                            @enderror
+                            <form action="/contact" method="POST" class="space-y-5">
                                 @csrf
                                 <div>
-                                    <label for="name" class="block mb-2 text-sm font-medium text-heading">Nama</label>
+                                    <label for="name"
+                                        class="block mb-2 text-sm font-medium text-heading">Nama</label>
                                     <input type="text" id="name" name="name"
                                         class="block w-full p-3 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
                                         placeholder="Nama lengkap kamu" />
                                 </div>
                                 <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-heading">Email</label>
+                                    <label for="email"
+                                        class="block mb-2 text-sm font-medium text-heading">Email</label>
                                     <input type="email" id="email" name="email"
                                         class="block w-full p-3 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
-                                        placeholder="nama@email.com" />
+                                        placeholder="nama@email.com"
+                                        value="{{ old('email', Auth::user()->email ?? '') }}" />
                                 </div>
                                 <div>
-                                    <label for="subject" class="block mb-2 text-sm font-medium text-heading">Subjek</label>
+                                    <label for="subject"
+                                        class="block mb-2 text-sm font-medium text-heading">Subjek</label>
                                     <input type="text" id="subject" name="subject"
                                         class="block w-full p-3 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
                                         placeholder="Tentang apa pesan ini?" />
                                 </div>
                                 <div>
-                                    <label for="message" class="block mb-2 text-sm font-medium text-heading">Pesan</label>
+                                    <label for="message"
+                                        class="block mb-2 text-sm font-medium text-heading">Pesan</label>
                                     <textarea id="message" name="message" rows="5"
                                         class="block w-full p-3 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
                                         placeholder="Tulis pesanmu di sini..."></textarea>
@@ -55,49 +70,61 @@
                         </div>
 
                         {{-- Info Kontak --}}
-                        <div class="flex flex-col justify-between p-6 border border-gray-200 rounded-lg dark:border-gray-700">
+                        <div
+                            class="flex flex-col justify-between p-6 border border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="space-y-6">
                                 <div class="flex items-start space-x-4">
-                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
-                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    <div
+                                        class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
+                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Email</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">hello@naiastudiolabs.com</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">naia.studiolabs@gmail.com</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start space-x-4">
-                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
-                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <div
+                                        class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
+                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Lokasi</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">Jakarta, Indonesia</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Banjarbaru, Kalimantan Selatan</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start space-x-4">
-                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
-                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    <div
+                                        class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
+                                        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Jam Respons</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">Senin–Jumat, 09.00–17.00 WIB</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Senin - Minggu, 09.00–18.00 WITA
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pt-6 mt-6 border-t border-gray-200 dark:border-gray-700">
                                 <p class="text-sm italic text-gray-500 dark:text-gray-400">
-                                    "Setiap pesan yang masuk kami baca sendiri — bukan sekadar tiket
+                                    "Setiap pesan yang masuk kami baca sendiri - bukan sekadar tiket
                                     otomatis yang dilupakan."
                                 </p>
                             </div>

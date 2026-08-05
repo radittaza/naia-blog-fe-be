@@ -34,15 +34,15 @@
 
                     <div class="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-3">
                         <div class="p-5 text-center border border-gray-200 rounded-lg dark:border-gray-700">
-                            <p class="text-2xl font-bold text-primary-600">1000+</p>
+                            <p class="text-2xl font-bold text-primary-600">{{ $postCount }}</p>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Tulisan Dipublikasikan</p>
                         </div>
                         <div class="p-5 text-center border border-gray-200 rounded-lg dark:border-gray-700">
-                            <p class="text-2xl font-bold text-primary-600">5+</p>
+                            <p class="text-2xl font-bold text-primary-600">{{ $categoryCount-1 }}+</p>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kategori Topik</p>
                         </div>
                         <div class="p-5 text-center border border-gray-200 rounded-lg dark:border-gray-700">
-                            <p class="text-2xl font-bold text-primary-600">1000+</p>
+                            <p class="text-2xl font-bold text-primary-600">{{ $userCount }}</p>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Pembaca Setia</p>
                         </div>
                     </div>
