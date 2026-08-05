@@ -2,19 +2,14 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xs sm:rounded-lg">
-                <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
+                <div class="py-12 px-6 mx-auto max-w-screen-xl lg:px-6">
 
                     <div class="mb-10 text-center">
-                        <span
-                            class="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase rounded-full bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-300">
-                            Hubungi Kami
-                        </span>
                         <h1 class="mb-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                            Punya Cerita atau Ide? Kami Ingin Dengar.
+                            Hubungi Kami
                         </h1>
                         <p class="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-400">
-                            Baik itu masukan, kolaborasi, atau sekadar sapaan — tim Naia Blog selalu
-                            terbuka untuk percakapan baru.
+                            Punya pertanyaan, masukan, atau ide kolaborasi? Kirimkan pesan, kami akan segera membalas.
                         </p>
                     </div>
 
@@ -84,7 +79,8 @@
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Email</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">naia.studiolabs@gmail.com</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">naia.studiolabs@gmail.com
+                                        </p>
                                     </div>
                                 </div>
 
@@ -101,7 +97,8 @@
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Lokasi</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">Banjarbaru, Kalimantan Selatan</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Banjarbaru, Kalimantan
+                                            Selatan</p>
                                     </div>
                                 </div>
 
@@ -116,7 +113,8 @@
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 dark:text-white">Jam Respons</p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">Senin - Minggu, 09.00–18.00 WITA
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Senin - Minggu, 09.00–18.00
+                                            WITA
                                         </p>
                                     </div>
                                 </div>
