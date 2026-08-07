@@ -44,10 +44,10 @@ class ProfileController extends Controller
 
         if($request->avatar){
             if ($request->user()->avatar) {
-                Storage::disk('public')->delete($request->user()->avatar);
+                Storage::disk(config('filesystems.default_public_disk'))->delete($request->user()->avatar);
             }
             $newFileName = Str::after($request->avatar, 'tmp/');
-            Storage::disk('public')->move($request->avatar, "avatars/$newFileName");
+            Storage::disk(config('filesystems.default_public_disk'))->move($request->avatar, "avatars/$newFileName");
             $validated['avatar'] = "avatars/$newFileName";
         }
 
@@ -60,7 +60,7 @@ class ProfileController extends Controller
     public function upload(Request $request)
     {
         if ($request->hasFile('avatar')) {
-            $tmpPath = $request->file('avatar')->store('tmp', 'public');
+            $tmpPath = $request->file('avatar')->store('tmp', config('filesystems.default_public_disk'));
         };
 
         return $tmpPath;
